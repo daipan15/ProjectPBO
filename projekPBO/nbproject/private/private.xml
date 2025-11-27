@@ -10,6 +10,16 @@
             <file>file:/C:/Users/DHAIFAN/Documents/NetBeansProjects/ProjectPBO/projekPBO/src/code/Item.java</file>
             <file>file:/C:/Users/DHAIFAN/Documents/NetBeansProjects/ProjectPBO/projekPBO/src/code/TransactionIn.java</file>
             <file>file:/C:/Users/DHAIFAN/Documents/NetBeansProjects/ProjectPBO/projekPBO/src/code/TransactionOut.java</file>
+            <file>file:/C:/Users/DHAIFAN/Documents/NetBeansProjects/ProjectPBO/projekPBO/src/code/DatabaseConnection.java</file>
+            <file>file:/C:/Users/DHAIFAN/Documents/NetBeansProjects/ProjectPBO/projekPBO/src/code/ItemDAO.java</file>
+            <file>file:/C:/Users/DHAIFAN/Documents/NetBeansProjects/ProjectPBO/projekPBO/src/code/CategoryItem.java</file>
+            <file>file:/C:/Users/DHAIFAN/Documents/NetBeansProjects/ProjectPBO/projekPBO/src/code/CategoryDAO.java</file>
+            <file>file:/C:/Users/DHAIFAN/Documents/NetBeansProjects/ProjectPBO/projekPBO/src/code/StokItem.java</file>
+            <file>file:/C:/Users/DHAIFAN/Documents/NetBeansProjects/ProjectPBO/projekPBO/src/code/StokDAO.java</file>
+            <file>file:/C:/Users/DHAIFAN/Documents/NetBeansProjects/ProjectPBO/projekPBO/src/code/TransactionsDAO.java</file>
+            <file>file:/C:/Users/DHAIFAN/Documents/NetBeansProjects/ProjectPBO/projekPBO/src/code/UserItem.java</file>
+            <file>file:/C:/Users/DHAIFAN/Documents/NetBeansProjects/ProjectPBO/projekPBO/src/code/UserDAO.java</file>
+            <file>file:/C:/Users/DHAIFAN/Documents/NetBeansProjects/ProjectPBO/projekPBO/src/code/GradientPanel.java</file>
         </group>
     </open-files>
 </project-private>
