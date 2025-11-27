@@ -13,15 +13,17 @@ public class TransactionIn {
     private int idIn;
     private int idItem;
     private int jumlah;
+    private String keterangan;
     private Timestamp tanggal;
     private int idUser;
 
     public TransactionIn() {}
 
-    public TransactionIn(int idIn, int idItem, int jumlah, Timestamp tanggal, int idUser) {
+    public TransactionIn(int idIn, int idItem, int jumlah, String keterangan, Timestamp tanggal, int idUser) {
         this.idIn = idIn;
         this.idItem = idItem;
         this.jumlah = jumlah;
+        this.keterangan = keterangan;
         this.tanggal = tanggal;
         this.idUser = idUser;
     }
@@ -48,6 +50,14 @@ public class TransactionIn {
 
     public void setJumlah(int jumlah) {
         this.jumlah = jumlah;
+    }
+    
+    public String getKeterangan() {
+        return keterangan;
+    }
+
+    public void setKeterangan(String keterangan) {
+        this.keterangan = keterangan;
     }
 
     public Timestamp getTanggal() {
