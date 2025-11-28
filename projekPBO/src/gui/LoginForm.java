@@ -165,7 +165,7 @@ public class LoginForm extends javax.swing.JFrame {
 
             // Cek di database
             Connection conn = code.DatabaseConnection.getConnection();
-            String sql = "SELECT id_user, username FROM users WHERE username=? AND password=?";
+            String sql = "SELECT id_user, username, role FROM users WHERE username=? AND password=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, username);
             ps.setString(2, passwordHash); // pastikan password sudah di-hash jika perlu
@@ -173,12 +173,18 @@ public class LoginForm extends javax.swing.JFrame {
 
             if (rs.next()) {
                 int idUserYangLogin = rs.getInt("id_user"); // ambil id_user
-
+                String role = rs.getString("role");
                 // buka form Admin dan set currentUserId
-                Admin admin = new Admin();
-                admin.setCurrentUserId(idUserYangLogin);
-                admin.setVisible(true);
-
+                if("admin".equalsIgnoreCase(role)){
+                    Admin admin = new Admin();
+                    admin.setCurrentUserId(idUserYangLogin);
+                    admin.setVisible(true);
+                }
+                else if("user".equalsIgnoreCase(role)){
+                    User admin = new User();
+                    admin.setCurrentUserId(idUserYangLogin);
+                    admin.setVisible(true);
+                }
                 // tutup login
                 this.dispose();
             } else {

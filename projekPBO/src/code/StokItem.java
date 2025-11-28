@@ -12,17 +12,23 @@ public class StokItem {
     private int idItem;
     private String namaItem;
     private int stok;
+    private int harga;
+    private String satuan;
 
-    public StokItem(int idItem, String namaItem, int stok) {
+    public StokItem(int idItem, String namaItem, int stok, int harga, String satuan) {
         this.idItem = idItem;
         this.namaItem = namaItem;
         this.stok = stok;
+        this.harga = harga;
+        this.satuan = satuan;
     }
 
     public int getIdItem() { return idItem; }
     public String getNamaItem() { return namaItem; }
     public int getStok() { return stok; }
+     public int getHarga() { return harga; }
     public void setStok(int stok) { this.stok = stok; }
+    public String getSatuan() { return satuan; }
 
     @Override
     public String toString() {

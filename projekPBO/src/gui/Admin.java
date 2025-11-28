@@ -127,6 +127,7 @@ public class Admin extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        setTabel();
         loadAktivitasTerakhir();
         loadKategori();
         loadKategoriTable();
@@ -146,8 +147,8 @@ public class Admin extends javax.swing.JFrame {
             cbBarangMasuk1.removeAllItems();
 
             // tambahkan placeholder
-            cbBarangMasuk.addItem(new StokItem(0, "-- Pilih Item --", 0));
-            cbBarangMasuk1.addItem(new StokItem(0, "-- Pilih Item --", 0));
+            cbBarangMasuk.addItem(new StokItem(0, "-- Pilih Item --", 0, 0 ,""));
+            cbBarangMasuk1.addItem(new StokItem(0, "-- Pilih Item --", 0, 0 , ""));
 
             // ambil semua item dari DB dan tambahkan ke ComboBox
             for (StokItem i : dao.getAllItems()) {
@@ -358,7 +359,7 @@ public class Admin extends javax.swing.JFrame {
             String sql = "SELECT t.tanggal, i.nama_item AS nama, t.jumlah, t.keterangan, u.username " +
                          "FROM transactions_in t " +
                          "JOIN items i ON t.id_item = i.id_item " +
-                         "JOIN users u ON t.id_user = u.id_user " +
+                         "JOIN users u ON t.id_user = u.id_user " + 
                          "WHERE DATE(t.tanggal) = CURDATE() " +
                          "UNION ALL " +
                          "SELECT t.tanggal, i.nama_item AS nama, -t.jumlah AS jumlah, t.keterangan, u.username " +
@@ -418,6 +419,15 @@ public class Admin extends javax.swing.JFrame {
         }
     }
     
+    
+    public void setTabel(){
+        jTable1.setBackground(new Color(37, 27, 27, 200)); 
+        jTable1.setForeground(Color.WHITE); 
+        jTable1.getTableHeader().setBackground(new Color(51, 0, 51)); 
+        jTable1.setGridColor(new Color(100, 100, 100)); 
+        jTable1.setSelectionBackground(new Color(100, 16, 117)); 
+        jTable1.setSelectionForeground(Color.WHITE);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -1412,7 +1422,7 @@ public class Admin extends javax.swing.JFrame {
                         .addComponent(btnStokKeluar)
                         .addGap(14, 14, 14)
                         .addComponent(btnRiwayatStok)))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         panelRiwayatStokLayout.setVerticalGroup(
             panelRiwayatStokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

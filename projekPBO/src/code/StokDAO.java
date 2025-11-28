@@ -22,7 +22,7 @@ public class StokDAO {
     // Ambil semua item untuk ComboBox
     public List<StokItem> getAllItems() {
         List<StokItem> list = new ArrayList<>();
-        String sql = "SELECT id_item, nama_item, stok FROM items";
+        String sql = "SELECT id_item, nama_item, stok, harga, satuan FROM items";
 
         try (PreparedStatement ps = conn.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
@@ -31,7 +31,9 @@ public class StokDAO {
                 list.add(new StokItem(
                     rs.getInt("id_item"),
                     rs.getString("nama_item"),
-                    rs.getInt("stok")
+                    rs.getInt("stok"),
+                    rs.getInt("harga"),
+                    rs.getString("satuan")
                 ));
             }
 
