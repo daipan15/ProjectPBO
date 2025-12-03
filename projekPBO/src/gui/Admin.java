@@ -131,7 +131,7 @@ public class Admin extends javax.swing.JFrame {
         loadAktivitasTerakhir();
         loadKategori();
         loadKategoriTable();
-        loadHistoryTable();
+        loadHistory();
         loadDataBarang();
         loadUsersCombo();
     }
@@ -523,6 +523,7 @@ public class Admin extends javax.swing.JFrame {
         btnRiwayatStok = new javax.swing.JButton();
         btnStokKeluar = new javax.swing.JButton();
         btnStokMasuk = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         panelUserManagement = new GradientPanel(new Color(37, 27, 27, 255), new Color(100, 16, 117, 255));
         jPanel1 = new GradientPanel(new Color(37, 27, 27, 255), new Color(100, 16, 117, 255));
         jLabel9 = new javax.swing.JLabel();
@@ -1402,6 +1403,16 @@ public class Admin extends javax.swing.JFrame {
         btnStokMasuk.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnStokMasuk.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        jButton2.setBackground(new java.awt.Color(51, 102, 255));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Refresh");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelRiwayatStokLayout = new javax.swing.GroupLayout(panelRiwayatStok);
         panelRiwayatStok.setLayout(panelRiwayatStokLayout);
         panelRiwayatStokLayout.setHorizontalGroup(
@@ -1413,15 +1424,17 @@ public class Admin extends javax.swing.JFrame {
             .addGroup(panelRiwayatStokLayout.createSequentialGroup()
                 .addGroup(panelRiwayatStokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelRiwayatStokLayout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelRiwayatStokLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnStokMasuk)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnStokKeluar)
                         .addGap(14, 14, 14)
-                        .addComponent(btnRiwayatStok)))
+                        .addComponent(btnRiwayatStok))
+                    .addGroup(panelRiwayatStokLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(panelRiwayatStokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton2)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         panelRiwayatStokLayout.setVerticalGroup(
@@ -1435,8 +1448,10 @@ public class Admin extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addComponent(jLabel26)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         subPanelStok.add(panelRiwayatStok, "card11");
@@ -1632,6 +1647,7 @@ public class Admin extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         loadAktivitasTerakhir();
+        updateDashboard();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -1871,6 +1887,7 @@ public class Admin extends javax.swing.JFrame {
 
             if (dao.insertItem(item)) {
                 JOptionPane.showMessageDialog(this, "Data berhasil disimpan!");
+                loadItemsCombo();
             } else {
                 JOptionPane.showMessageDialog(this, "Gagal menyimpan data!");
             }
@@ -2020,6 +2037,7 @@ public class Admin extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Stok berhasil dikurangi!");
                 loadItemsCombo();
                 loadHistory();
+                loadAktivitasTerakhir();
 
             } else {
                 JOptionPane.showMessageDialog(this, "Gagal update stok!");
@@ -2069,6 +2087,7 @@ public class Admin extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Stok berhasil ditambahkan!");
                 loadItemsCombo();
                 loadHistory();
+                loadAktivitasTerakhir();
 
             } else {
                 JOptionPane.showMessageDialog(this, "Gagal update stok!");
@@ -2096,6 +2115,11 @@ public class Admin extends javax.swing.JFrame {
     private void btnRiwayatStok2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRiwayatStok2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRiwayatStok2ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        loadHistory();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2158,6 +2182,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbRole;
     private javax.swing.JComboBox<UserItem> cbUser;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
